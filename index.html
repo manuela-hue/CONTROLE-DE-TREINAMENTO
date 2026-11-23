@@ -132,6 +132,52 @@ tr:last-child td{border-bottom:0}
 .esync{font-size:12px;font-weight:600;margin-right:8px;padding:1px 8px;border-radius:99px}
 .esync.ok{background:var(--okbg);color:var(--ok)}.esync.wait{background:var(--warnbg);color:var(--warn)}
 @media (prefers-reduced-motion:reduce){.sync.wait .sdot{animation:none}}
+/* Guia "Como usar" */
+.tablist{overflow-x:auto;overflow-y:hidden;max-width:100%}
+.tablist button{white-space:nowrap;margin-bottom:0}
+.guia-intro{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--agua);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+.guia-intro p{margin:0}
+.passos{list-style:none;counter-reset:passo;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+.passo{counter-increment:passo;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 18px 18px 66px;position:relative;break-inside:avoid}
+.passo::before{content:counter(passo);position:absolute;left:18px;top:16px;width:32px;height:32px;border-radius:50%;background:var(--roxobg);color:var(--roxo);font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center}
+.passo h3{margin:0 0 6px;font-size:16px;line-height:1.35;padding-top:4px}
+.passo p{margin:0 0 8px}
+.passo p:last-child{margin-bottom:0}
+.passo ul{margin:6px 0 0;padding-left:18px}
+.passo li{margin:4px 0}
+.passo .obg{font-size:12px;font-weight:600;color:var(--bad);margin-left:4px}
+.passo .ex{display:inline-block;background:var(--surface2);border-radius:6px;padding:0 7px;font-size:13.5px;font-weight:600}
+.cores{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.cores>span{display:flex;align-items:baseline;gap:8px}
+.cores i{width:10px;height:10px;border-radius:50%;flex:none;transform:translateY(1px)}
+.dicas{background:var(--warnbg);border-radius:14px;padding:16px 18px;margin-top:16px}
+.dicas h3{margin:0 0 6px;font-size:16px}
+.dicas ul{margin:0;padding-left:18px}
+.dicas li{margin:4px 0}
+.guia-fim{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+@media (max-width:520px){.passo{padding:16px 14px 16px 56px}.passo::before{left:14px}}
+/* Tour guiado */
+.tour-dim{position:fixed;inset:0;background:rgba(20,16,35,.55);z-index:9000;display:none}
+.tour-spot{position:fixed;z-index:9001;display:none;border-radius:12px;border:3px solid #FFB020;box-shadow:0 0 0 9999px rgba(20,16,35,.55);pointer-events:none;transition:top .2s,left .2s,width .2s,height .2s;animation:tourPulse 1.6s infinite}
+.tour-spot::after{content:"";position:absolute;inset:-3px;border-radius:12px;animation:tourRing 1.6s infinite}
+@keyframes tourPulse{0%,100%{border-color:#FFB020}50%{border-color:#FFE08A}}
+@keyframes tourRing{0%{box-shadow:0 0 0 0 rgba(255,176,32,.75)}100%{box-shadow:0 0 0 16px rgba(255,176,32,0)}}
+.tour-tag{position:fixed;z-index:9002;display:none;background:#FFB020;color:#1D1A2E;font-size:12.5px;font-weight:800;padding:4px 10px;border-radius:99px;pointer-events:none;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.tour-box{position:fixed;z-index:9003;display:none;width:min(370px,calc(100vw - 32px));background:var(--surface);color:var(--ink);border:1px solid var(--line);border-top:4px solid #FFB020;border-radius:14px;padding:12px 16px 16px;box-shadow:0 14px 44px rgba(0,0,0,.3)}
+.tour-prog{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:700;color:var(--muted)}
+.tour-x{border:0;background:none;font-size:16px;color:var(--muted);padding:2px 6px;border-radius:6px}
+.tour-bar{height:5px;background:var(--surface2);border-radius:99px;overflow:hidden;margin:6px 0 12px}
+.tour-bar i{display:block;height:100%;background:var(--roxo);transition:width .2s}
+.tour-box h3{margin:0 0 6px;font-size:17px;line-height:1.3}
+.tour-box p{margin:0 0 10px;font-size:14.5px}
+.tour-box .tour-hint{background:var(--warnbg);color:var(--warn);font-weight:600;font-size:13px;border-radius:8px;padding:6px 10px}
+.tour-acts{display:flex;gap:8px;align-items:center;margin-top:4px}
+.tour-cta{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;background:var(--roxobg);border:1px solid var(--roxo);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+.tour-cta p{margin:2px 0 0}
+.passo .mostrar{float:right;margin:0 0 8px 12px}
+@media (max-width:520px){.passo .mostrar{float:none;display:inline-block;margin:0 0 10px}}
+@media print{.tour-dim,.tour-spot,.tour-tag,.tour-box{display:none!important}}
+@media (prefers-reduced-motion:reduce){.tour-spot,.tour-spot::after{animation:none}.tour-spot{transition:none}}
 .gate{min-height:80vh;display:flex;align-items:center;justify-content:center}
 .gatebox{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--roxo);border-radius:14px;padding:28px;width:min(440px,100%)}
 .gatebox h1{font-size:22px}
@@ -411,8 +457,10 @@ function bindGate(){
     var n=inp.value.replace(/\s+/g," ").trim();
     if(n.split(" ").length<2||n.length<5){$("#gErr").textContent="Digite nome e sobrenome.";inp.focus();return}
     usuario=n;try{localStorage.setItem(USER_KEY,n)}catch(e){}
+    var primeira=false;try{primeira=!localStorage.getItem(GUIA_KEY)}catch(e){}
     render();
     if(!persistIniciado){persistIniciado=true;initPersist()}
+    if(primeira)setTimeout(function(){iniciarTour(0)},700);
   }
   ok.onclick=entrar;inp.onkeydown=function(e){if(e.key==="Enter")entrar()};
   setTimeout(function(){inp.focus();inp.select()},30);
@@ -420,8 +468,182 @@ function bindGate(){
 function tabsHTML(){
   return "<nav class=\"tabs noprint\" aria-label=\"Seções\"><div class=\"tablist\">"+
     "<button data-aba=\"cronograma\" aria-current=\""+(aba==="cronograma"?"page":"false")+"\">Cronograma</button>"+
-    "<button data-aba=\"historico\" aria-current=\""+(aba==="historico"?"page":"false")+"\">Histórico de alterações</button></div>"+
+    "<button data-aba=\"historico\" aria-current=\""+(aba==="historico"?"page":"false")+"\">Histórico de alterações</button>"+
+    "<button data-aba=\"ajuda\" aria-current=\""+(aba==="ajuda"?"page":"false")+"\">Como usar</button></div>"+
     "<div class=\"quem\">Acessando como <strong>"+esc(usuario)+"</strong> <button class=\"edit-link\" id=\"btnTrocarUsuario\" style=\"margin:0 0 0 6px\">Trocar</button></div></nav>";
+}
+var GUIA_KEY="cronograma-treino-guia-visto";
+function guiaHTML(){
+  var c0=esc(nomeC(0).split(" ")[0]),c1=esc(nomeC(1).split(" ")[0]);
+  var h="<section class=\"guia\" style=\"margin-top:22px\"><div class=\"sechead\"><div><h2>Como usar o cronograma</h2><p class=\"sub\">Passo a passo para registrar e acompanhar o treinamento dos condutores.</p></div><button class=\"btn small noprint\" id=\"btnPrintGuia\">Imprimir passo a passo</button></div>";
+  h+="<div class=\"guia-intro\"><p><strong>Para que serve:</strong> registrar cada sessão em que o expedidor ensina uma tarefa da expedição a um condutor. Assim fica claro quem já está pronto para cobrir folgas e ausências e o que ainda precisa de reforço. Todos que abrem este link veem os mesmos dados, em tempo real.</p></div>";
+  h+="<div class=\"tour-cta noprint\"><div><strong>Prefere ver na prática?</strong><p class=\"sub\">O tour guiado destaca na tela, em amarelo, onde clicar em cada etapa.</p></div><button class=\"btn primary\" data-tour=\"0\">▶ Iniciar tour guiado</button></div>";
+  h+="<ol class=\"passos\">";
+  h+="<li class=\"passo\"><h3>Entre com o seu nome</h3><p>Ao abrir o link, digite <strong>nome e sobrenome</strong> e clique em <span class=\"ex\">Acessar</span>. O seu nome fica gravado em tudo o que você criar, editar ou excluir.</p><p>Se outra pessoa for usar o mesmo computador ou celular, clique em <span class=\"ex\">Trocar</span>, ao lado de “Acessando como”, no topo da página.</p></li>";
+  h+="<li class=\"passo\"><h3>Confira os nomes e a loja</h3><p>No quadro do topo aparecem o expedidor (instrutor), a loja e os dois condutores em treinamento. Se algum nome estiver errado, clique em <span class=\"ex\">Editar nomes e unidade</span>, corrija e clique em <span class=\"ex\">Salvar nomes</span>.</p></li>";
+  h+="<li class=\"passo\"><h3>Escolha o dia no calendário</h3><p>Na aba <strong>Cronograma</strong>, clique no dia em que o treinamento aconteceu. Use <span class=\"ex\">‹ Anterior</span>, <span class=\"ex\">Hoje</span> e <span class=\"ex\">Próximo ›</span> para mudar de mês.</p><p>Os dias que já têm sessões mostram uma bolinha colorida com o nome do condutor: <strong style=\"color:var(--roxo)\">roxa para "+c0+"</strong> e <strong style=\"color:var(--agua)\">azul para "+c1+"</strong>.</p></li>";
+  h+="<li class=\"passo\"><h3>Registre a sessão de treinamento</h3><p>Depois de escolher o dia, desça até <strong>Registrar sessão neste dia</strong> e preencha. O ideal é fazer isso logo ao final de cada sessão:</p><ul>"+
+    "<li><strong>Condutor:</strong> quem foi treinado.</li>"+
+    "<li><strong>Horário</strong><span class=\"obg\">obrigatório o início</span>: início e fim. O fim é opcional, mas sem ele as horas de treino não são somadas.</li>"+
+    "<li><strong>Tópico ensinado</strong><span class=\"obg\">obrigatório</span>: escolha da lista ou digite um novo. Use <strong>sempre o mesmo nome</strong> para o mesmo tópico, senão ele aparece duplicado nos relatórios.</li>"+
+    "<li><strong>O que foi explicado</strong><span class=\"obg\">obrigatório</span>: os passos, regras e pontos de atenção passados.</li>"+
+    "<li><strong>Como foi explicado</strong><span class=\"obg\">obrigatório</span>: marque um ou mais métodos (verbal, demonstração, execução acompanhada…) e, se quiser, escreva um detalhe.</li>"+
+    "<li><strong>O condutor se saiu bem?</strong><span class=\"obg\">obrigatório</span>: Sim, Parcialmente ou Não.</li>"+
+    "<li><strong>Nota de 0 a 10</strong><span class=\"obg\">obrigatório</span>.</li>"+
+    "<li><strong>Apto a executar sozinho:</strong> marque só quando o condutor já consegue fazer a tarefa sem ajuda.</li>"+
+    "<li><strong>Feedback do condutor</strong> e <strong>Observações do expedidor:</strong> dúvidas, dificuldades e o que reforçar na próxima vez.</li>"+
+    "</ul><p style=\"margin-top:10px\">Clique em <span class=\"ex\">Registrar sessão</span>. Se faltar algum campo, aparece um aviso em vermelho dizendo o que preencher.</p></li>";
+  h+="<li class=\"passo\"><h3>Confira se foi salvo</h3><p>Logo abaixo do quadro do topo há um aviso de sincronização:</p><div class=\"cores\">"+
+    "<span><i style=\"background:var(--ok)\"></i><span><strong>Sincronizado com o Firebase:</strong> tudo salvo, e os outros já veem.</span></span>"+
+    "<span><i style=\"background:var(--warn)\"></i><span><strong>Enviando / Sem internet:</strong> o registro fica guardado no aparelho e é enviado sozinho quando a conexão voltar. Não feche a página até ficar verde.</span></span>"+
+    "<span><i style=\"background:var(--bad)\"></i><span><strong>Erro de sincronização:</strong> recarregue a página e, se continuar, avise o responsável pelo cronograma.</span></span>"+
+    "</div></li>";
+  h+="<li class=\"passo\"><h3>Corrija ou exclua quando precisar</h3><p>Cada sessão registrada tem os botões <span class=\"ex\">Editar</span> e <span class=\"ex\">Excluir</span>. Ao editar, o formulário abre preenchido. Altere o que precisar e clique em <span class=\"ex\">Salvar alterações</span>.</p><p>A exclusão não pode ser desfeita no cronograma, mas fica registrada na aba <strong>Histórico de alterações</strong>, com todos os dados da sessão apagada.</p></li>";
+  h+="<li class=\"passo\"><h3>Acompanhe o andamento</h3><p>Ainda na aba Cronograma, mais abaixo:</p><ul>"+
+    "<li><strong>Andamento por condutor:</strong> número de sessões, horas de treino, nota média e quantos tópicos já estão aptos.</li>"+
+    "<li><strong>Prontidão para cobertura:</strong> uma tabela com cada tópico e a situação de cada condutor: <span class=\"st apto\">Apto</span> <span class=\"st reforco\">Precisa reforço</span> <span class=\"st nao\">Não treinado</span>. Vale sempre o que foi marcado na <strong>última sessão</strong> daquele tópico.</li>"+
+    "<li><strong>Histórico completo:</strong> todas as sessões, da mais recente para a mais antiga, com filtro por condutor.</li>"+
+    "</ul></li>";
+  h+="<li class=\"passo\"><h3>Gere relatórios</h3><ul>"+
+    "<li><span class=\"ex\">Baixar resumo do dia</span>: aparece ao abrir um dia que tem sessões. Gera um arquivo com o resultado de cada condutor e espaço para assinatura do expedidor e da supervisão. Abra o arquivo no navegador e use <strong>Imprimir &gt; Salvar como PDF</strong>.</li>"+
+    "<li><span class=\"ex\">Exportar CSV</span>: baixa todas as sessões para abrir no Excel.</li>"+
+    "<li><span class=\"ex\">Imprimir</span>: imprime o cronograma completo.</li>"+
+    "</ul></li>";
+  h+="<li class=\"passo\"><h3>Consulte o histórico de alterações</h3><p>A aba <strong>Histórico de alterações</strong> mostra quem criou, editou ou excluiu cada sessão, com data e horário, e o que mudou (antes e depois). Dá para filtrar por tipo de ação e por pessoa, e exportar em CSV. Esses registros não podem ser alterados nem apagados.</p></li>";
+  h+="</ol>";
+  var MAPA=[1,2,4,6,3,16,18,17,21],k=0;
+  h=h.replace(/<li class="passo"><h3>/g,function(){return "<li class=\"passo\"><button class=\"btn small mostrar noprint\" data-tour=\""+MAPA[k++]+"\">👆 Mostrar na tela</button><h3>"});
+  h+="<div class=\"dicas\"><h3>Dicas</h3><ul>"+
+    "<li>Funciona no celular: dá para registrar a sessão na hora, ali mesmo na expedição.</li>"+
+    "<li>Registre uma sessão por tópico. Se no mesmo dia foram ensinados dois assuntos, faça dois registros.</li>"+
+    "<li>Repita o tópico em novas sessões até o condutor ficar apto. O cronograma conta quantas vezes cada tópico foi treinado.</li>"+
+    "<li>Este link é compartilhado: não coloque senhas nem dados pessoais de clientes nos campos.</li>"+
+    "</ul></div>";
+  h+="<div class=\"guia-fim noprint\"><button class=\"btn primary\" data-aba=\"cronograma\">Ir para o cronograma</button></div>";
+  return h+"</section>";
+}
+/* ---------- Tour guiado: destaca na tela onde clicar ---------- */
+function fld(sel){var e=$(sel);return e?e.closest(".f"):null}
+function secao(t){return [].slice.call(document.querySelectorAll("#app section")).filter(function(s){var x=s.querySelector("h2");return x&&x.textContent.indexOf(t)===0})[0]||null}
+function garantirDia(){if(!selDate){var t=hojeStr();selDate=t;calY=+t.slice(0,4);calM=+t.slice(5,7)-1}}
+var TOUR=[
+  {titulo:"Bem-vindo ao cronograma!",texto:"Este tour mostra, na própria tela, onde clicar para registrar e acompanhar o treinamento. O item de cada etapa fica destacado em amarelo. Avance com “Próximo ›”."},
+  {aba:"cronograma",alvo:".quem",titulo:"Quem está usando",texto:"Aqui aparece o seu nome. Tudo o que você registrar fica gravado com ele. Se outra pessoa for usar este aparelho, clique em “Trocar”."},
+  {aba:"cronograma",alvo:"#btnCfg",titulo:"Nomes e loja",texto:"Se o nome do expedidor, da loja ou de algum condutor estiver errado, clique em “Editar nomes e unidade” para corrigir."},
+  {aba:"cronograma",alvo:".sync",titulo:"Confirmação de salvamento",texto:"Verde: tudo salvo e visível para todos. Amarelo: enviando ou sem internet (o registro é enviado sozinho quando a conexão voltar). Vermelho: erro, recarregue a página."},
+  {aba:"cronograma",alvo:".calhead",tag:"👆 Clique aqui",titulo:"Escolha o mês",texto:"Use “‹ Anterior”, “Hoje” e “Próximo ›” para navegar entre os meses do calendário."},
+  {aba:"cronograma",alvo:".days",clique:true,titulo:"Clique no dia do treinamento",texto:"Clique no dia em que a sessão aconteceu. Os dias que já têm sessões mostram uma bolinha com o nome do condutor."},
+  {aba:"cronograma",antes:garantirDia,alvo:function(){return fld("[data-cond]")},tag:"👆 Clique aqui",titulo:"Escolha o condutor",texto:"No formulário do dia, clique no nome do condutor que foi treinado."},
+  {aba:"cronograma",antes:garantirDia,alvo:function(){return fld("#fIni")},tag:"✏️ Preencha aqui",titulo:"Horário",texto:"Preencha o horário de início (obrigatório) e o de fim. Com o fim preenchido, o cronograma soma as horas de treino."},
+  {aba:"cronograma",antes:garantirDia,alvo:function(){return fld("#fTop")},tag:"✏️ Preencha aqui",titulo:"Tópico ensinado",texto:"Escolha da lista ou digite um novo. Use sempre o mesmo nome para o mesmo tópico, senão ele aparece duplicado nos relatórios."},
+  {aba:"cronograma",antes:garantirDia,alvo:function(){return fld("#fExp")},tag:"✏️ Preencha aqui",titulo:"O que foi explicado",texto:"Descreva os passos, as regras e os pontos de atenção passados ao condutor."},
+  {aba:"cronograma",antes:garantirDia,alvo:function(){return fld("[data-met]")},tag:"👆 Clique aqui",titulo:"Como foi explicado",texto:"Clique em um ou mais métodos usados. Se quiser, escreva um detalhe no campo logo abaixo."},
+  {aba:"cronograma",antes:garantirDia,alvo:function(){return fld("[data-des]")},tag:"👆 Clique aqui",titulo:"O condutor se saiu bem?",texto:"Clique em Sim, Parcialmente ou Não."},
+  {aba:"cronograma",antes:garantirDia,alvo:function(){return fld("[data-nota]")},tag:"👆 Clique aqui",titulo:"Nota",texto:"Clique na nota de 0 a 10 para o desempenho nesta sessão."},
+  {aba:"cronograma",antes:garantirDia,alvo:function(){return fld("#fApto")},tag:"☑️ Marque aqui",titulo:"Apto a executar sozinho",texto:"Marque só quando o condutor já consegue fazer essa tarefa sem ajuda. É isso que define a tabela de prontidão."},
+  {aba:"cronograma",antes:garantirDia,alvo:function(){return [fld("#fFb"),fld("#fObs")].filter(Boolean)},tag:"✏️ Preencha aqui",titulo:"Feedback e observações",texto:"Anote como o condutor avaliou a tarefa, as dúvidas dele e o que reforçar na próxima sessão."},
+  {aba:"cronograma",antes:garantirDia,alvo:"#btnSave",tag:"👆 Clique aqui",titulo:"Salve a sessão",texto:"Com tudo preenchido, clique em “Registrar sessão”. Se faltar algum campo, aparece um aviso em vermelho dizendo o que preencher."},
+  {aba:"cronograma",antes:garantirDia,alvo:function(){return $("#daysec .entry")},titulo:"Editar ou excluir",texto:"Cada sessão registrada aparece no dia com os botões “Editar” e “Excluir”. Exclusões ficam guardadas no histórico de alterações."},
+  {aba:"cronograma",antes:garantirDia,alvo:"#daysec .daysec-head",titulo:"Resumo do dia",texto:"Quando o dia tem sessões, aparece aqui o botão “Baixar resumo do dia”: um relatório com espaço para assinaturas. Abra no navegador e use Imprimir > Salvar como PDF."},
+  {aba:"cronograma",alvo:".panels",titulo:"Andamento por condutor",texto:"Sessões, horas de treino, nota média e quantos tópicos cada condutor já está apto a fazer sozinho."},
+  {aba:"cronograma",alvo:function(){return secao("Prontidão")},titulo:"Prontidão para cobertura",texto:"Mostra cada tópico e a situação de cada condutor: Apto, Precisa reforço ou Não treinado. Vale o que foi marcado na última sessão daquele tópico."},
+  {aba:"cronograma",alvo:function(){var b=$("#btnCsv");return b?b.closest(".filters"):null},titulo:"Histórico completo e relatórios",texto:"Filtre as sessões por condutor, clique em “Exportar CSV” para abrir no Excel ou em “Imprimir” para imprimir o cronograma."},
+  {aba:"cronograma",alvo:"[data-aba=historico]",clique:true,titulo:"Histórico de alterações",texto:"Clique nesta aba para ver quem criou, editou ou excluiu cada sessão, com data e horário."},
+  {aba:"historico",alvo:function(){var s=$("#histPessoa");return s?s.closest(".filters"):null},titulo:"Filtre o histórico",texto:"Filtre por tipo de ação ou por pessoa. O botão “Exportar histórico (CSV)” baixa tudo para o Excel. Esses registros não podem ser apagados."},
+  {aba:"cronograma",alvo:"[data-aba=ajuda]",titulo:"Pronto!",texto:"Sempre que precisar rever, este tour e o passo a passo escrito ficam na aba “Como usar”."}
+];
+var tourI=-1,tourTimer=null,tourEls=null;
+function tourAlvo(p){
+  if(!p||!p.alvo)return null;
+  var el=typeof p.alvo==="function"?p.alvo():$(p.alvo);
+  if(Array.isArray(el))return el.length?el:null;
+  return el||null;
+}
+function tourRect(el){
+  var list=Array.isArray(el)?el:[el],r=null;
+  list.forEach(function(e){var b=e.getBoundingClientRect();if(!r)r={top:b.top,left:b.left,right:b.right,bottom:b.bottom};else{r.top=Math.min(r.top,b.top);r.left=Math.min(r.left,b.left);r.right=Math.max(r.right,b.right);r.bottom=Math.max(r.bottom,b.bottom)}});
+  r.width=r.right-r.left;r.height=r.bottom-r.top;return r;
+}
+function tourMontar(){
+  if(tourEls)return tourEls;
+  var E={dim:document.createElement("div"),spot:document.createElement("div"),tag:document.createElement("div"),box:document.createElement("div")};
+  E.dim.className="tour-dim";E.spot.className="tour-spot";E.tag.className="tour-tag";E.box.className="tour-box";
+  E.box.setAttribute("role","dialog");E.box.setAttribute("aria-labelledby","tourTit");
+  E.box.innerHTML="<div class=\"tour-prog\"><span id=\"tourNum\"></span><button class=\"tour-x\" id=\"tourX\" aria-label=\"Fechar tour\">✕</button></div><div class=\"tour-bar\"><i id=\"tourBar\"></i></div><h3 id=\"tourTit\"></h3><p id=\"tourTxt\"></p><p class=\"tour-hint\" id=\"tourHint\"></p><div class=\"tour-acts\"><button class=\"btn small\" id=\"tourPular\">Pular tour</button><span style=\"flex:1\"></span><button class=\"btn small\" id=\"tourVoltar\">‹ Voltar</button><button class=\"btn small primary\" id=\"tourProx\">Próximo ›</button></div>";
+  document.body.appendChild(E.dim);document.body.appendChild(E.spot);document.body.appendChild(E.tag);document.body.appendChild(E.box);
+  $("#tourX").onclick=fimTour;$("#tourPular").onclick=fimTour;
+  $("#tourVoltar").onclick=function(){irPara(tourI-1)};
+  $("#tourProx").onclick=function(){irPara(tourI+1)};
+  document.addEventListener("keydown",function(e){if(tourI>-1&&e.key==="Escape")fimTour()});
+  window.addEventListener("resize",tourDesenhar);window.addEventListener("scroll",tourDesenhar,{passive:true});
+  /* Clicar no item destacado avança sozinho nas etapas de "clique aqui" */
+  document.addEventListener("click",function(e){
+    if(tourI<0)return;var p=TOUR[tourI];if(!p.clique)return;
+    var el=tourAlvo(p);if(!el||Array.isArray(el)||!el.contains(e.target))return;
+    if(p.alvo===".days"&&!e.target.closest("[data-day]"))return;
+    var atual=tourI;setTimeout(function(){if(tourI===atual)irPara(atual+1)},150);
+  },true);
+  tourEls=E;return E;
+}
+function iniciarTour(i){try{localStorage.setItem(GUIA_KEY,"1")}catch(e){}irPara(i||0)}
+function irPara(i){
+  var E=tourMontar();
+  if(i<0)i=0;
+  if(i>=TOUR.length){fimTour();return}
+  tourI=i;var p=TOUR[i];
+  lerCampos();
+  if(p.aba)aba=p.aba;
+  if(p.antes)p.antes();
+  render();
+  $("#tourNum").textContent="Passo "+(i+1)+" de "+TOUR.length;
+  $("#tourBar").style.width=Math.round((i+1)/TOUR.length*100)+"%";
+  $("#tourTit").textContent=p.titulo;$("#tourTxt").textContent=p.texto;
+  var el=tourAlvo(p),hint=$("#tourHint");
+  hint.textContent=(!el&&p.alvo)?"Este item aparece na tela depois que houver sessões registradas.":(p.clique?"👆 Clique no item destacado para continuar, ou use “Próximo ›”.":"");
+  hint.style.display=hint.textContent?"block":"none";
+  $("#tourVoltar").disabled=i===0;
+  $("#tourProx").textContent=i===TOUR.length-1?"Concluir ✓":"Próximo ›";
+  E.tag.textContent=p.tag||(p.clique?"👆 Clique aqui":"👀 Veja aqui");
+  if(el){
+    var r=tourRect(el),H=window.innerHeight;
+    var topo=(window.innerWidth<600||r.height>H*0.45)?80:H*0.28;
+    var suave=!window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({top:Math.max(0,r.top+window.scrollY-topo),behavior:suave?"smooth":"auto"});
+  }else window.scrollTo(0,0);
+  tourDesenhar();
+  if(!tourTimer)tourTimer=setInterval(tourDesenhar,150);
+  setTimeout(function(){var b=$("#tourProx");if(b)b.focus({preventScroll:true})},60);
+}
+function tourDesenhar(){
+  if(tourI<0||!tourEls)return;
+  var E=tourEls,p=TOUR[tourI],el=tourAlvo(p),box=E.box;
+  box.style.display="block";
+  var bw=box.offsetWidth,bh=box.offsetHeight,W=window.innerWidth,H=window.innerHeight,M=14,mob=W<600;
+  if(!el){
+    E.spot.style.display="none";E.tag.style.display="none";E.dim.style.display="block";
+    box.style.left=(mob?16:(W-bw)/2)+"px";box.style.top=(mob?H-bh-16:(H-bh)/2)+"px";return;
+  }
+  E.dim.style.display="none";
+  var r=tourRect(el),pad=6,t=r.top-pad,l=r.left-pad,w=r.width+pad*2,h=r.height+pad*2;
+  var s=E.spot.style;s.display="block";s.top=t+"px";s.left=l+"px";s.width=w+"px";s.height=h+"px";
+  E.tag.style.display="block";
+  var tw=E.tag.offsetWidth,tagTop=t-32;if(tagTop<6)tagTop=t+6;
+  E.tag.style.top=tagTop+"px";E.tag.style.left=Math.min(Math.max(l,8),W-tw-8)+"px";
+  var bt,bl=null;
+  if(r.bottom+pad+M+bh<=H-8)bt=r.bottom+pad+M;
+  else if(r.top-pad-M-bh>=8)bt=r.top-pad-M-bh;
+  else if(!mob&&r.right+pad+M+bw<=W-8){bt=Math.min(Math.max(r.top,8),H-bh-8);bl=r.right+pad+M}
+  else if(!mob&&r.left-pad-M-bw>=8){bt=Math.min(Math.max(r.top,8),H-bh-8);bl=r.left-pad-M-bw}
+  else bt=H-bh-16;
+  if(bl===null)bl=mob?16:Math.min(Math.max(r.left,16),W-bw-16);
+  bt=Math.min(Math.max(bt,8),Math.max(8,H-bh-8));
+  box.style.top=bt+"px";box.style.left=bl+"px";
+}
+function fimTour(){
+  var fim=tourI===TOUR.length-1;
+  tourI=-1;clearInterval(tourTimer);tourTimer=null;
+  if(tourEls){tourEls.dim.style.display="none";tourEls.spot.style.display="none";tourEls.tag.style.display="none";tourEls.box.style.display="none"}
+  toast(fim?"Tour concluído!":"Tour encerrado. Para rever, use a aba “Como usar”.");
 }
 var ACOES={criacao:"Criação",edicao:"Edição",exclusao:"Exclusão",configuracao:"Configuração"};
 function fmtQuando(ms){var d=new Date(ms);return d.toLocaleDateString("pt-BR")+" às "+d.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit",second:"2-digit"})}
@@ -479,6 +701,9 @@ function render(){
   h+=tabsHTML();
   if(aba==="historico"){
     h+=histHTML();app.innerHTML=h;bind();window.scrollTo(0,sc);return;
+  }
+  if(aba==="ajuda"){
+    h+=guiaHTML();app.innerHTML=h;bind();window.scrollTo(0,sc);return;
   }
   h+=calHTML();
   h+=diaHTML();
@@ -645,6 +870,8 @@ function bind(){
   app.querySelectorAll("[data-hacao]").forEach(function(b){b.onclick=function(){histAcao=b.dataset.hacao;render()}});
   var hp=$("#histPessoa");if(hp)hp.onchange=function(){histPessoa=hp.value;render()};
   var hc=$("#btnHistCsv");if(hc)hc.onclick=exportHistCsv;
+  var pg=$("#btnPrintGuia");if(pg)pg.onclick=function(){window.print()};
+  app.querySelectorAll("[data-tour]").forEach(function(b){b.onclick=function(){iniciarTour(+b.dataset.tour)}});
 }
 function salvar(){
   lerCampos();var d=draft,err=[];
